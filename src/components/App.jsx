@@ -1,37 +1,36 @@
-import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
+import { useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
 
-import { BsMoonStarsFill, BsSunFill } from "react-icons/bs";
+import { BsMoonStarsFill, BsSunFill } from 'react-icons/bs';
 
 const App = () => {
   const { systemTheme, theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
   const renderThemeChanger = () => {
     if (!mounted) return null;
 
-    const currentTheme = theme === "system" ? systemTheme : theme;
+    const currentTheme = theme === 'system' ? systemTheme : theme;
 
-    if (currentTheme === "dark") {
+    if (currentTheme === 'dark') {
       return (
         <div
           className="rounded-full border-none cursor-pointer"
-          onClick={() => setTheme("light")}
+          onClick={() => setTheme('light')}
         >
           <BsSunFill className="text-2xl" />
         </div>
       );
-    } else {
-      return (
-        <div
-          className="rounded-full border-none cursor-pointer"
-          onClick={() => setTheme("dark")}
-        >
-          <BsMoonStarsFill className="text-2xl" />
-        </div>
-      );
     }
+    return (
+      <div
+        className="rounded-full border-none cursor-pointer"
+        onClick={() => setTheme('dark')}
+      >
+        <BsMoonStarsFill className="text-2xl" />
+      </div>
+    );
   };
 
   useEffect(() => {
